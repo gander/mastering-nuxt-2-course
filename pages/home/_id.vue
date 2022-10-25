@@ -12,21 +12,16 @@
 </template>
 
 <script>
-import homes from '~/data/homes.json';
-
 export default {
   head() {
     return {
       title: this.home.title,
     };
   },
-  date() {
+  async asyncData({params, $dataApi}) {
     return {
-      home: {},
+      home: await $dataApi.getHome(params.id),
     };
-  },
-  created() {
-    this.home = homes.find(home => home.objectID === this.$route.params.id);
   },
   mounted() {
     this.$maps.showMap(
