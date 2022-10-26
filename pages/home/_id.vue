@@ -18,10 +18,17 @@ export default {
       title: this.home.title,
     };
   },
-  async asyncData({params, $dataApi}) {
-    return {
-      home: await $dataApi.getHome(params.id),
-    };
+  async asyncData({params, $dataApi, error}) {
+    const {
+      json: home,
+      ok: success,
+      status: statusCode,
+      statusText: message,
+    } = await $dataApi.getHome(params.id);
+
+    return success
+        ? {home}
+        : error({statusCode, message});
   },
   mounted() {
     this.$maps.showMap(
