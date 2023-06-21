@@ -2,7 +2,7 @@
   "name": "@gander/mastering-nuxt-2-course",
   "private": true,
   "dependencies": {
-    "nuxt": "^2.15.8"
+    "nuxt": "^3.4.3"
   },
   "scripts": {
     "dev": "nuxt",
